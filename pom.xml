@@ -134,6 +134,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>product-api</finalName>
 	</build>
 	<repositories>
 		<repository>
