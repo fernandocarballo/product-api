@@ -36,7 +36,7 @@ La misma no esta segurizada para que pueda ser consultada sin login.
 Puede disponer de esta imagen actualizada en el repositorio de Docker Hub: https://hub.docker.com/repository/docker/fernandocarballo/product-api
 
 ### Despliegue
-El siguiente comando le permite levantar usar la imagen en el puerto 8070
+El siguiente comando le permite usar la api desde un repositorio docker. Habilitando el acceso en el puerto 8070
 ```
 docker run -p 8070:8070 fernandocarballo/product-api
 ```
