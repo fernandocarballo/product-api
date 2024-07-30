@@ -1,9 +1,6 @@
 c:\Proyectos\java\product-api\src\main\java\ar\fcarballo\product_api\configuration\OpenAPIConfig.java
 c:\Proyectos\java\product-api\src\main\java\ar\fcarballo\product_api\configuration\RepositoryRestConfig.java
-c:\Proyectos\java\product-api\src\main\java\ar\fcarballo\product_api\configuration\SpringFoxConfig.java
+c:\Proyectos\java\product-api\src\main\java\ar\fcarballo\product_api\configuration\SwaggerBasicAuthFilter.java
 c:\Proyectos\java\product-api\src\main\java\ar\fcarballo\product_api\model\Product.java
 c:\Proyectos\java\product-api\src\main\java\ar\fcarballo\product_api\ProductApiApplication.java
-c:\Proyectos\java\product-api\src\main\java\ar\fcarballo\product_api\ReadOnlyRepository.java
-c:\Proyectos\java\product-api\src\main\java\ar\fcarballo\product_api\ReadOnlySimpleRepository.java
 c:\Proyectos\java\product-api\src\main\java\ar\fcarballo\product_api\repository\ClienteRepository.java
-c:\Proyectos\java\product-api\src\main\java\ar\fcarballo\product_api\SaveSimpleRepository.java

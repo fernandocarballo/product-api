@@ -1,4 +1,4 @@
-FROM openjdk:21-jdk-alpine
+FROM eclipse-temurin:21
 EXPOSE 8070
-ADD target/product-api.jar
+ADD target/product-api.jar /product-api.jar
 ENTRYPOINT ["java","-jar","/product-api.jar"]

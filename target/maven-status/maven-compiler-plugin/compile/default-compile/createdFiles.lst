@@ -1,10 +1,6 @@
 ar\fcarballo\product_api\configuration\RepositoryRestConfig.class
 ar\fcarballo\product_api\configuration\OpenAPIConfig$1.class
-ar\fcarballo\product_api\ReadOnlySimpleRepository.class
 ar\fcarballo\product_api\model\Product.class
 ar\fcarballo\product_api\repository\ClienteRepository.class
 ar\fcarballo\product_api\ProductApiApplication.class
 ar\fcarballo\product_api\configuration\OpenAPIConfig.class
-ar\fcarballo\product_api\ReadOnlyRepository.class
-ar\fcarballo\product_api\SaveSimpleRepository.class
-ar\fcarballo\product_api\configuration\SpringFoxConfig.class

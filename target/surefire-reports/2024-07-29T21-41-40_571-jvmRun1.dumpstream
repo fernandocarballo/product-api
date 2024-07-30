@@ -1,0 +1,24 @@
+# Created at 2024-07-29T21:41:59.913
+Corrupted channel by directly writing to native stream in forked JVM 1. Stream '#'.
+
+# Created at 2024-07-29T21:41:59.915
+Corrupted channel by directly writing to native stream in forked JVM 1. Stream '# There is insufficient memory for the Java Runtime Environment to continue.'.
+
+# Created at 2024-07-29T21:41:59.918
+Corrupted channel by directly writing to native stream in forked JVM 1. Stream '# Native memory allocation (malloc) failed to allocate 872448 bytes for Chunk::new'.
+
+# Created at 2024-07-29T21:41:59.920
+Corrupted channel by directly writing to native stream in forked JVM 1. Stream '# An error report file with more information is saved as:'.
+
+# Created at 2024-07-29T21:42:00.510
+Corrupted channel by directly writing to native stream in forked JVM 1. Stream '# c:\Proyectos\java\product-api\hs_err_pid15540.log'.
+
+# Created at 2024-07-29T21:42:00.512
+Corrupted channel by directly writing to native stream in forked JVM 1. Stream '#'.
+
+# Created at 2024-07-29T21:42:00.513
+Corrupted channel by directly writing to native stream in forked JVM 1. Stream '# Compiler replay data is saved as:'.
+
+# Created at 2024-07-29T21:42:00.572
+Corrupted channel by directly writing to native stream in forked JVM 1. Stream '# c:\Proyectos\java\product-api\replay_pid15540.log'.
+
