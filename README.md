@@ -27,9 +27,9 @@ El acceso a la API se encuentra segurizado mediante Basic Auth.
 - `Usuario` admin
 - `Contraseña` 1234
 
-### documentacion y UI
+### Documentacion y UI
 El servicio despliega una web para poder usar la api y comprender el uso de las funcionalidades. 
-Disponible en: http://localhost:8070/shagger-ui/index.html
+Disponible en: [http://localhost:8070/shagger-ui/index.html](http://localhost:8070/swagger-ui/index.html)
 La misma no esta segurizada para que pueda ser consultada sin login.
 
 ## Imagen Docker
