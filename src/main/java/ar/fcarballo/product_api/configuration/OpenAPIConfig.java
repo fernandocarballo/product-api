@@ -1,7 +1,5 @@
 package ar.fcarballo.product_api.configuration;
 
-import java.util.List;
-
 import org.springdoc.core.utils.SpringDocUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
