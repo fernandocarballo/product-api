@@ -7,12 +7,13 @@
 Api Rest desarrollada en Java para la creacion, modificacion, eliminacion y consulta de productos.
 Esta api esta desarrollada con estandares de OpenApi, y documentada con Swagger.
 
-## Requerimientos
-- Java 21
+
 
 ## Uso
 Descargue este proyecto y ejecutelo. Por defecto el servicio esta disponible en el puerto 8070.
 Por ejemplo: http://localhost:8070/
+### Requerimientos
+- Java 21
 
 ### Seguridad
 El acceso a la API se encuentra segurizado mediante Basic Auth.
