@@ -7,14 +7,6 @@
 Api Rest desarrollada en Java para la creacion, modificacion, eliminacion y consulta de productos.
 Esta api esta desarrollada con estandares de OpenApi, y documentada con Swagger.
 
-## Metodos disponibles
-- Insert
-- Update
-- Delete
-- Get
-- FindByName
-- List
-
 ## Requerimientos
 - Java 21
 
@@ -26,6 +18,21 @@ Por ejemplo: http://localhost:8070/
 El acceso a la API se encuentra segurizado mediante Basic Auth.
 - `Usuario` admin
 - `Contraseña` 1234
+
+## Endpoint de productos
+Con la url anterior el endpoint de productos es http://localhost:8070/products
+
+## Metodos disponibles
+Actualmente los motodos disponibles son:
+
+| Accion | Metodo http | Enpoint pattern |
+|-|-|-|
+| `Insert` | POST | http://localhost:8070/products/ |
+| `Update` | PATCH | http://localhost:8070/products/{id} |
+| `Delete` | DELETE | http://localhost:8070/products/{id} |
+| `Get` | GET | http://localhost:8070/products/{id} |
+| `FindByName` | GET | http://localhost:8070/products/search/byName?name={name} |
+| `List` | GET | http://localhost:8070/products/ |
 
 ### Documentacion y UI
 El servicio despliega una web para poder usar la api y comprender el uso de las funcionalidades. 
