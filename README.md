@@ -23,7 +23,7 @@ El acceso a la API se encuentra segurizado mediante Basic Auth.
 Con la url anterior el endpoint de productos es http://localhost:8070/products
 
 ## Metodos disponibles
-Actualmente los motodos disponibles son:
+Actualmente los metodos disponibles son:
 
 | Accion | Metodo http | Enpoint pattern |
 |-|-|-|
