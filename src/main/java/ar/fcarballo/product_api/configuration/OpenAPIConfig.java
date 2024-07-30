@@ -72,6 +72,6 @@ public class OpenAPIConfig
 
 		Info info = new Info().title("Productos REST API").version("1.0").contact(contact).description("Esta API permite crear, modificar y consultar productos.").license(mitLicense);
 
-		return new OpenAPI().info(info).servers(List.of(devServer));
+		return new OpenAPI().info(info);//.servers(List.of(devServer));
 	}
 }
