@@ -23,7 +23,7 @@ El acceso a la API se encuentra segurizado mediante Basic Auth.
 ## Endpoint de productos
 Con la url anterior el endpoint de productos es http://localhost:8070/products
 
-## Metodos disponibles
+## Metodos de productos disponibles
 Actualmente los metodos disponibles son:
 
 | Accion | Metodo http | Enpoint pattern |
@@ -34,6 +34,17 @@ Actualmente los metodos disponibles son:
 | `Get` | GET | http://localhost:8070/products/{id} |
 | `FindByName` | GET | http://localhost:8070/products/search/byName?name={name} |
 | `List` | GET | http://localhost:8070/products/ |
+
+## Endpoint de estadisticas
+Con la url anterior el endpoint de productos es http://localhost:8070/statistics
+
+## Metodos estadisticas disponibles
+Actualmente los metodos disponibles son:
+
+| Accion | Metodo http | Enpoint pattern |
+|-|-|-|
+| `Get` | GET | http://localhost:8070/statistics/{id} |
+| `List` | GET | http://localhost:8070/statistics/ |
 
 ### Documentacion y UI
 El servicio despliega una web para poder usar la api y comprender el uso de las funcionalidades. 
@@ -48,3 +59,9 @@ El siguiente comando le permite usar la api desde un repositorio docker. Habilit
 ```
 docker run -p 8070:8070 fernandocarballo/product-api
 ```
+
+## Uso en linea
+Puede usar la api en linea desde el siguiente enlace mediante la UI de Swagger: https://product-api-6xdy2vpwua-rj.a.run.app/swagger-ui/index.html
+O directamente desde el enlace: https://product-api-6xdy2vpwua-rj.a.run.app/
+
+
