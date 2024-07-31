@@ -26,6 +26,9 @@ public class Product
 	@NotBlank(message = "El sku no puede estar vacio")
 	private String sku;
 
+	@NotBlank(message = "La categoria no puede estar vacia")
+	private String category;
+
 	@NotBlank(message = "El nombre no puede estar vacio")
 	private String name;
 

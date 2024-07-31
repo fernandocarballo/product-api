@@ -11,7 +11,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 @Tag(name = "Productos - Controller") 
 @RepositoryRestResource(path = "products", itemResourceRel = "Producto", collectionResourceRel = "Productos")
-public interface ClienteRepository extends ListCrudRepository<Product, Integer>
+public interface ProductRepository extends ListCrudRepository<Product, Integer>
 {
 	@RestResource(path = "byName", rel = "customFindMethod")
 	public List<Product> findByNameContainingIgnoreCase(String name);
