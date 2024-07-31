@@ -61,7 +61,13 @@ docker run -p 8070:8070 fernandocarballo/product-api
 ```
 
 ## Uso en linea
-Puede usar la api en linea desde el siguiente enlace mediante la UI de Swagger: https://product-api-6xdy2vpwua-rj.a.run.app/swagger-ui/index.html
-O directamente desde el enlace: https://product-api-6xdy2vpwua-rj.a.run.app/
+Puede usar la api en linea desde el siguiente enlace mediante la UI de Swagger: 
+```
+https://product-api-6xdy2vpwua-rj.a.run.app/swagger-ui/index.html
+```
+O directamente desde el enlace: 
+```
+https://product-api-6xdy2vpwua-rj.a.run.app/
+```
 
 
