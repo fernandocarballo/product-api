@@ -20,7 +20,6 @@ public class RepositoryRestConfig {
             config.exposeIdsFor(entityManager.getMetamodel().getEntities()
                     .stream().map(Type::getJavaType).toArray(Class[]::new));
             config.setDefaultMediaType(MediaType.APPLICATION_JSON);
-            //config.useHalAsDefaultJsonMediaType(false);
         });
     }
 

@@ -1,7 +1,6 @@
 package ar.fcarballo.product_api.configuration;
 
 import org.springdoc.core.utils.SpringDocUtils;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,14 +13,10 @@ import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Contact;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.License;
-import io.swagger.v3.oas.models.servers.Server;
 
 @Configuration
 public class OpenAPIConfig
 {
-
-	@Value("${fcarballo.openapi.dev-url}")
-	private String devUrl;
 
 	/* 
 	 * This bean is used to register the swaggerBasicAuthFilter bean.
@@ -45,7 +40,11 @@ public class OpenAPIConfig
 			@Override
 			public void addCorsMappings(CorsRegistry registry)
 			{
-				registry.addMapping("/**").allowedOrigins("*");
+				registry.addMapping("/**")
+						.allowedOrigins("*")
+						.allowedMethods("GET", "POST", "PUT", "DELETE", "PATCH")
+						.allowedHeaders("*")
+						.maxAge(3600);
 			}
 		};
 	}
@@ -56,9 +55,6 @@ public class OpenAPIConfig
 	@Bean
 	public OpenAPI myOpenAPI()
 	{
-		Server devServer = new Server();
-		devServer.setUrl(devUrl);
-		devServer.setDescription("Server URL local");
 
 		SpringDocUtils.getConfig().addResponseTypeToIgnore(Links.class);
 		Contact contact = new Contact();
@@ -70,6 +66,6 @@ public class OpenAPIConfig
 
 		Info info = new Info().title("Productos REST API").version("1.0").contact(contact).description("Esta API permite crear, modificar y consultar productos.").license(mitLicense);
 
-		return new OpenAPI().info(info);//.servers(List.of(devServer));
+		return new OpenAPI().info(info);
 	}
 }
