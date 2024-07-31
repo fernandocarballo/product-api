@@ -66,6 +66,9 @@ public class OpenAPIConfig {
 		return new OpenAPI().info(info);
 	}
 
+	/*
+	 * This bean is used to configure the ForwardedHeaderFilter.
+	 */
 	@Bean
 	public ForwardedHeaderFilter forwardedHeaderFilter() {
 		return new ForwardedHeaderFilter();

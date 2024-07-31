@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import ar.fcarballo.product_api.model.Statistic;
 import ar.fcarballo.product_api.repository.StatisticsRepository;
+import jakarta.transaction.Transactional;
 import lombok.extern.java.Log;
 
 @Service
@@ -16,16 +17,17 @@ public class StatisticsService {
 
     @Async
     public void insertProduct(final String category) {
-        repository.findById(category)
-            .ifPresentOrElse(this::addAndSave, 
-                () -> this.addAndSave(new Statistic(category)));
+        syncInsertProduct(category);
     }
 
     @Async
     public void deleteProduct(final String category) {
-        repository.findById(category)
-            .ifPresent(this::subAndSave);
-        
+        syncDeleteProduct(category);
+    }
+
+    @Async
+    public void updateProduct(final String categoryStored, final String categoryModified) {
+        syncUpdateProduct(categoryStored, categoryModified);
     }
 
     private void addAndSave(Statistic statistic) {
@@ -39,8 +41,22 @@ public class StatisticsService {
         log.info("Product removed from statistics");
     }
 
-    @Async
-    public void updateProduct(final String categoryStored, final String categoryModified) {
+    @Transactional
+    public void syncInsertProduct(final String category) {
+        repository.findById(category)
+            .ifPresentOrElse(this::addAndSave, 
+                () -> this.addAndSave(new Statistic(category)));
+    }
+
+    @Transactional
+    public void syncDeleteProduct(final String category) {
+        repository.findById(category)
+            .ifPresent(this::subAndSave);
+        
+    }
+
+    @Transactional
+    public void syncUpdateProduct(final String categoryStored, final String categoryModified) {
         if (categoryStored.compareTo(categoryModified) != 0) {
             deleteProduct(categoryStored);
             insertProduct(categoryModified);

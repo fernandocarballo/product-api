@@ -5,19 +5,25 @@ import java.util.Optional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.RepositoryRestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import ar.fcarballo.product_api.model.Product;
 import ar.fcarballo.product_api.repository.ProductRepository;
 import ar.fcarballo.product_api.service.StatisticsService;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 
 @RepositoryRestController
 @Tag(name = "Productos - Controller")
+@Validated
 public class ProductController {
 
     @Autowired
@@ -28,17 +34,25 @@ public class ProductController {
 
     @PatchMapping("/products/{id}")
     @ResponseBody
-    public Product patchProduct(@PathVariable("id") Integer id, @RequestBody Product updatedProduct) {
+    public Product patchProduct(@PathVariable("id") Integer id, @RequestBody @Valid Product updatedProduct) {
         return updateProduct(id, updatedProduct);
     }
 
     @PutMapping("/products/{id}")
     @ResponseBody
-    public Product putProduct(@PathVariable("id") Integer id, @RequestBody Product updatedProduct) {
+    public Product putProduct(@PathVariable("id") Integer id, @RequestBody @Valid Product updatedProduct) {
         return updateProduct(id, updatedProduct);
     }
 
-    protected Product updateProduct(@PathVariable("id") Integer id, @RequestBody Product updatedProduct) {
+    
+    @PostMapping("/products")
+    @ResponseBody
+    @ResponseStatus(HttpStatus.CREATED)
+    public Product postProduct(@RequestBody @Valid Product updatedProduct) {
+        return productRepository.save(updatedProduct);
+    }
+
+    protected Product updateProduct(Integer id, Product updatedProduct) {
 
         String storedCategory = null;
         if (id == null)

@@ -1,6 +1,9 @@
 package ar.fcarballo.product_api.aspect;
+import java.util.Optional;
+
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.stereotype.Component;
@@ -19,16 +22,40 @@ public class StatisticsUpdater {
     @Autowired
     private ProductRepository productRepository;
 
-    @Before("execution(* ar.fcarballo.product_api.repository.ProductRepository.deleteById(..)) && args(productId)")
-    public void afterDeleteProduct(Integer productId) throws Exception {
-        if(productId != null)
-            productRepository.findById(productId)
-                .ifPresent(product -> statisticsService.deleteProduct(product.getCategory()));
+    @Around("execution(* ar.fcarballo.product_api.repository.ProductRepository.deleteById(..)) && args(productId)")
+    public Object aroundDeleteProduct(ProceedingJoinPoint joinPoint, Integer productId) throws Throwable {
+        String category = getCategory(productId);
+
+        Object result = joinPoint.proceed();
+
+        if (category != null)
+            statisticsService.deleteProduct(category);
+
+        return result;
     }
 
-    @Before("execution(* ar.fcarballo.product_api.repository.ProductRepository.save(..)) && args(product)")
-    public void afterSaveProduct(Product product) throws Throwable {
-        if(product.getId() == null)
-            statisticsService.insertProduct(product.getCategory());
+    @Around("execution(* ar.fcarballo.product_api.repository.ProductRepository.save(..)) && args(product)")
+    public Object aroundSaveProduct(ProceedingJoinPoint joinPoint, Product product) throws Throwable {
+        String category = null;
+        if (product.getId() == null)
+           category = product.getCategory();
+
+        Object result = joinPoint.proceed();
+
+        if (category != null)
+            statisticsService.insertProduct(category);
+
+        return result;
+    }
+
+    private String getCategory(Integer productId) {
+        if(productId == null)
+            return null;
+
+        Optional<Product> product = productRepository.findById(productId);
+        if (!product.isPresent())
+           return null;
+        
+        return product.get().getCategory();
     }
 }

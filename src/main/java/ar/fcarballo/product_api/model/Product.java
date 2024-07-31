@@ -2,8 +2,7 @@ package ar.fcarballo.product_api.model;
 
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-
+import jakarta.validation.constraints.PositiveOrZero;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -32,6 +31,6 @@ public class Product
 	@NotBlank(message = "El nombre no puede estar vacio")
 	private String name;
 
-	@NotNull(message = "El nombre no puede ser null")
+	@PositiveOrZero(message = "El precio debe ser mayor o igual que 0")
 	private int price;
 }

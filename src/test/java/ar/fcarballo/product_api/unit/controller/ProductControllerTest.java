@@ -215,6 +215,7 @@ public class ProductControllerTest {
     private JSONObject createProductJson() {
         JSONObject product = new JSONObject();
         product.put("name", "Mandarina");
+        product.put("category", "Frutas");
         product.put("sku", "AKS332");
         product.put("price", 1234);
 
