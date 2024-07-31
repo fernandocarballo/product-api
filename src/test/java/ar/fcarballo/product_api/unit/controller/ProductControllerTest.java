@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
+import java.util.Map;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -23,7 +24,13 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import ar.fcarballo.product_api.model.Product;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.PositiveOrZero;
+import net.bytebuddy.description.method.MethodDescription.TypeToken;
 import net.minidev.json.JSONObject;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
@@ -76,6 +83,27 @@ public class ProductControllerTest {
                 String.class);
 
         assertTrue(response.getStatusCode() == HttpStatus.UNAUTHORIZED);
+    }
+
+    
+    @Test
+    void createProductWrongValues() throws Exception {
+        HttpEntity<String> request = new HttpEntity<String>(createProductWrongValuesJson().toString(), headers);
+
+        ResponseEntity<String> response = testRestTemplate
+                .withBasicAuth(user, password)
+                .postForEntity(BASE_URL + port + PRODUCTS_URL, request, String.class);
+
+        assertTrue(response.getStatusCode() == HttpStatus.BAD_REQUEST);
+        String body = response.getBody();
+        ObjectMapper objectMapper = new ObjectMapper();
+        Map<String, String> map = objectMapper.readValue(body, new TypeReference<Map<String, String>>() {});
+        
+        assertTrue(map.size() == 4);
+        assertNotNull(map.get("sku"));
+        assertNotNull(map.get("category"));
+        assertNotNull(map.get("name"));
+        assertNotNull(map.get("price"));
     }
 
     @Test
@@ -218,6 +246,16 @@ public class ProductControllerTest {
         product.put("category", "Frutas");
         product.put("sku", "AKS332");
         product.put("price", 1234);
+
+        return product;
+    }
+
+    private JSONObject createProductWrongValuesJson() {
+        JSONObject product = new JSONObject();
+        product.put("name", "");
+        product.put("category", "");
+        product.put("sku", "");
+        product.put("price", -1);
 
         return product;
     }
